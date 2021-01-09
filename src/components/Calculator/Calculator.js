@@ -8,7 +8,6 @@ const Calculator = ( ) => {
     const [number, setNumber] = useState('0')
     const [memory, setMemory] = useState('')
 
-    
     const numClick = (e) => {
         e.preventDefault()
         let val = e.target.value
@@ -17,7 +16,6 @@ const Calculator = ( ) => {
             if ( exp[0] === '0' && exp[1] !== '.' ) {
                 return exp.replace('0', '')
             }
-            
             return exp})
     }
 
