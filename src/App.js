@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
-import Buttons from './components/Buttons/Buttons'
-import Display from './components/Display/Display'
+import Calculator from './components/Calculator/Calculator'
+
 
 const App = () => {
+  
   return (
     <div className='wrapper'>
-    
-      <Buttons />
+      <Calculator />
     </div>
   )
 }
