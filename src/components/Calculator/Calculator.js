@@ -42,15 +42,26 @@ const Calculator = ( ) => {
                 return number.replace('-', '')
            }
             return  number})
-
     }
 
     const clearClick = () => {
         setNumber('0')
     }
 
-    const mcClick = () => {
-        setMemory('0')
+    const memoClearClick = () => {
+        setMemory('')
+    }
+
+    const memoReadClick = () => {   
+        setNumber(() => (number + memory).replace('0', ''))
+    }
+
+    const memoMinusClick = () => {
+        setMemory(() => memory - number)
+    }
+
+    const memoPlusClick = () => {
+        setMemory(() => memory + number)
     }
 
 
@@ -65,10 +76,10 @@ const Calculator = ( ) => {
             <button className={s.grey} onClick={ plusMinusClick}>+/-</button>
             <button className={s.grey} value='%' onClick={ operatorClick}>%</button>
             <button className={s.orange} value='/' onClick={ operatorClick}>&divide;</button>
-            <button className={s.dark} onClick={ mcClick}>mc</button>
-            <button className={s.dark} >mr</button>
-            <button className={s.dark}>m-</button>
-            <button className={s.orange}>m+</button>
+            <button className={s.dark} onClick={ memoClearClick}>mc</button>
+            <button className={s.dark} onClick={ memoReadClick}>mr</button>
+            <button className={s.dark} onClick={ memoMinusClick}>m-</button>
+            <button className={s.orange} onClick={ memoPlusClick}>m+</button>
             <button className={s.dark} value='7' onClick={ numClick}>7</button>
             <button className={s.dark} value='8' onClick={ numClick}>8</button>
             <button className={s.dark} value='9' onClick={ numClick}>9</button>

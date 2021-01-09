@@ -2,9 +2,9 @@ export function parseCalculationString(s) {
     // --- Parse a calculation string into an array of numbers and operators
     var calculation = [],
         current = '';
-    for (var i = 0, ch; ch = s.charAt(i); i++) {
+    for (let i = 0, ch; ch = s.charAt(i); i++) {
         if ('%*/+-'.indexOf(ch) > -1) {
-            if (current == '' && ch == '-') {
+            if (current === '' && ch === '-') {
                 current = '-';
             } else {
                 calculation.push(parseFloat(current), ch);
@@ -14,7 +14,7 @@ export function parseCalculationString(s) {
             current += s.charAt(i);
         }
     }
-    if (current != '') {
+    if (current !== '') {
         calculation.push(parseFloat(current));
     }
     return calculation;
