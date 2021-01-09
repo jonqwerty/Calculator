@@ -6,7 +6,7 @@ import { calculate, parseCalculationString } from '../../logic'
 const Calculator = ( ) => {
     
     const [number, setNumber] = useState('0')
-    const [memory, setMemory] = useState('0')
+    const [memory, setMemory] = useState('')
 
     
     const numClick = (e) => {
@@ -19,30 +19,36 @@ const Calculator = ( ) => {
             }
             
             return exp})
-
     }
 
     const operatorClick = (e) => {
         e.preventDefault()
         let val = e.target.value
         if(val === '=') {
-            
-            //console.log('good') 
-            //console.log(number) 
             setNumber(calculate(parseCalculationString(number)))
             console.log(parseCalculationString(number)) 
         } else {
         setNumber((number) => { 
            
             return number + val})
-        }
+        }     
+    }
 
-       
+    const plusMinusClick = () => {
+        setNumber((number) => { 
+           if (number[0] !== '-') {
+                return '-' + number
+           } else if ( number[0] === '-') {
+                return number.replace('-', '')
+           }
+            return  number})
+
     }
 
     const clearClick = () => {
         setNumber('0')
     }
+
     const mcClick = () => {
         setMemory('0')
     }
@@ -56,7 +62,7 @@ const Calculator = ( ) => {
 
         <div className={s.wrapper}>
             <button className={s.grey} onClick={ clearClick} >AC</button>
-            <button className={s.grey}>+/-</button>
+            <button className={s.grey} onClick={ plusMinusClick}>+/-</button>
             <button className={s.grey} value='%' onClick={ operatorClick}>%</button>
             <button className={s.orange} value='/' onClick={ operatorClick}>&divide;</button>
             <button className={s.dark} onClick={ mcClick}>mc</button>
@@ -81,7 +87,7 @@ const Calculator = ( ) => {
             <button className={s.coma} value='.' onClick={ numClick}>,</button>
             <button className={s.equal } value='=' onClick={ operatorClick}>=</button>
         </div>
-        <p> {} </p>
+        
     </div>
     )
 }
