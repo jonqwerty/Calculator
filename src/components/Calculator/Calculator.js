@@ -51,7 +51,8 @@ const Calculator = ( ) => {
     }
 
     const memoReadClick = () => {   
-        setNumber(() => (number + memory).replace('0', ''))
+        //setNumber(() => number + memory)
+        setNumber(() => (number + memory).replace(/^0/, ''))
     }
 
     const memoMinusClick = () => {
