@@ -1,4 +1,4 @@
-export function parseCalculationString(s) {
+export function parseCalculationString(s:string): Array<any> {
     // --- Parse a calculation string into an array of numbers and operators
     var calculation = [],
         current = '';
@@ -20,12 +20,14 @@ export function parseCalculationString(s) {
     return calculation;
 }
 
-export function calculate(calc) {
+export function calculate(calc: Array<any>): Array<number> {
     // --- Perform a calculation expressed as an array of operators and numbers
-    var ops = [{'%': (a=1, b=1) => a *b/100},
-               {'*': (a, b) => a * b, '/': (a, b) => a / b},
-               {'+': (a, b) => a + b, '-': (a, b) => a - b}],
-        newCalc = [],
+
+    
+    var ops:any = [{'%': (a=1, b=1) => a *b/100},
+               {'*': (a: number, b: number) => a * b, '/': (a: number, b: number) => a / b},
+               {'+': (a: number, b: number) => a + b, '-': (a: number, b: number) => a - b}],
+        newCalc: Array<number> = [],
         currentOp;
     for (var i = 0; i < ops.length; i++) {
         for (var j = 0; j < calc.length; j++) {

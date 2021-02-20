@@ -1,5 +1,5 @@
 {
-  "name": "calc",
+  "name": "calculator",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://jonqwerty.github.io/Calculator",
@@ -7,9 +7,14 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.20",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "typescript": "^4.0.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

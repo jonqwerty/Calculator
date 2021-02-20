@@ -5,41 +5,41 @@ import { calculate, parseCalculationString } from '../../logic'
 
 const Calculator = ( ) => {
     
-    const [number, setNumber] = useState('0')
+    const [expression, setNumber] = useState('0')
     const [memory, setMemory] = useState('')
 
-    const numClick = (e) => {
+    const numClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        let val = e.target.value
-        setNumber((number) => { 
-            let exp =  number + val
+        let val = (e.target as HTMLButtonElement).value
+        setNumber((expression) => { 
+            let exp =  expression + val
             if ( exp[0] === '0' && exp[1] !== '.' ) {
                 return exp.replace('0', '')
             }
             return exp})
     }
 
-    const operatorClick = (e) => {
+    const operatorClick = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        let val = e.target.value
+        let val = (e.target as HTMLButtonElement).value
         if(val === '=') {
-            setNumber(calculate(parseCalculationString(number)))
-            console.log(parseCalculationString(number)) 
+            setNumber(calculate(parseCalculationString(expression)))
+            console.log(parseCalculationString(expression)) 
         } else {
-        setNumber((number) => { 
+        setNumber((expression) => { 
            
-            return number + val})
+            return expression + val})
         }     
     }
 
     const plusMinusClick = () => {
-        setNumber((number) => { 
-           if (number[0] !== '-') {
-                return '-' + number
-           } else if ( number[0] === '-') {
-                return number.replace('-', '')
+        setNumber((expression) => { 
+           if (expression[0] !== '-') {
+                return '-' + expression
+           } else if ( expression[0] === '-') {
+                return expression.replace('-', '')
            }
-            return  number})
+            return  expression})
     }
 
     const clearClick = () => {
@@ -52,22 +52,23 @@ const Calculator = ( ) => {
 
     const memoReadClick = () => {   
         //setNumber(() => number + memory)
-        setNumber(() => (number + memory).replace(/^0/, ''))
+        setNumber(() => (expression + memory).replace(/^0/, ''))
     }
 
     const memoMinusClick = () => {
-        setMemory(() => memory - number)
+       // @ts-ignore
+        setMemory(() => memory - expression)
     }
 
     const memoPlusClick = () => {
-        setMemory(() => memory + number)
+        setMemory(() => memory + expression)
     }
 
 
     return(
     <div>
         <div className={d.display}>
-            <output> {number}</output>
+            <output> {expression}</output>
         </div>
 
         <div className={s.wrapper}>
